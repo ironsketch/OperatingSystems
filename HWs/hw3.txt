@@ -1,0 +1,87 @@
+Operating Systems
+HW3
+Michelle Bergin
+
+3.1, 3.2, 3.4, 3.5, 3.10, 3.11, 3.12
+
+3.1) 
+	Assuming NONRESIDENT is in regards to the process not having claim on main memory.
+
+	1) 1) Ready → run 
+	   	The process was next in line (based on the process manager?) so it was selected to run it's process
+
+	   2) Run → ready
+		A time out could have accurd so the process is put back in ready queue. Or Another process with higher importance comes by and the current one is halted and put in a queue.
+
+	   3) Run → Blocked
+		The process needs claim to an IO or it has succesfully gotten an IO but now needs to wait for that process to end.
+
+	   4) Blocked → Ready
+		The IO is finished processing so the process is put back in ready queue
+
+	   5) Ready → Nonresident
+		The processor has too many processes and other processes were created with higher priority so the process in the ready state no longer has claim on main memory to free up space for others but the process is still listed in the process table.
+
+	   6) Blocked → Nonresident
+		The process has been waiting on io and it's taking longer than other processes so the computer moves it out of main memeory to free up space for others.
+
+3.2)
+	@5 P1 blocked IO wait
+	@15 P5 Ready
+	@18 P7 blocked IO wait
+	@20 P3 blocked IO wait
+		@ 22 
+	@24 P5 blocked IO wait
+	@28 P5 NONRESIDENT blocked
+	@33 P3 Ready
+	@36 P1 Ready
+		@ 37
+	@38 P8 NONRESIDENT being terminated
+	@40 P5 NONRESIDENT ready
+	@44 P5 Ready
+		@ 47
+	@48 P7 Ready
+
+3.4)
+	Asking an artist to draw a diagram... if this turns out how I hope it'll turn out you may need to expand your window
+
+	Event Queue could be anything from multiple blocked or ready queues divided by importance or other factors, maybe even time. 
+
+																					Release		########
+																 ############### -------------> # Exit #
+	###############	   Admit	 ###############	 Dispatch	 #			   # 				########
+	# New process # -----------> # Ready Queue # --------------->#  Processor  # -------------------+
+	###############	  ^  |  ^    ###############				 #			   # --------------+	|
+					  |	 |	|					   timeout ----- ############### --------+     |	|
+					  |	 |  l-----------------------------/								 | 	   |	|
+					  |	 |																 |	   |	|
+					  |	 | Suspended													 |	   |	|
+					 ∫	 l-----> #######################			###################  |	   |	|
+					| 			 # Suspended but ready # <---------	# Event   Queue 1 # <'	   |	|
+					|<---------- #######################			###################		   |	|
+					|						^												   |	|
+					|						| 												   |	|
+					|						| 						###################		   |	|
+					|			 #######################			# Event   Queue 1 # <------'	|
+                    |            # Suspended / Blocked # <---------	###################  		 	|
+					|			 #######################					 .						|
+					|          												 .						|
+					|														 .						|
+					|												###################				|
+                    |<--------------------------------------------- # Event   Queue n # <-----------'
+                                 									###################
+
+	There are more ways for all the arrows to go. Like a Suspended/Blocked I am assuming could be put to a blocked queue and no longer be suspended.
+
+3.5)
+	My first thought is that when the higher priority suspended process is ready that the memory manager should immediatly allocate memory. But, as the question suggests, that there may be need to swap out memory, possibly sending another process to suspended. So here are my wild probably highly inaccurate ideas ...
+	
+	∙ Have a table associated to each process that has an estimated time frame for completion based on what the process needs to do. Then run faster processes while we wait for the higher priority process to be in ready to run.
+	∙ Have processes run while we wait for the HP (high priority) to load, that allow for interrupts. So that when the HP is ready it can interrupt what is currently running. 
+	Hope these were good enough
+
+3.10)
+	HELP
+
+3.12)
+	You created a baby process and it's printing the id of that child process? My assumption is it's unoque identifier or the memory location of it?			

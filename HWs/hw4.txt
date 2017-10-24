@@ -1,0 +1,34 @@
+Michelle Bergin
+Operating Systems
+HW4
+
+4.1, 4.2, 4.3, 4.4, 4.5, 4.7, 4.8, 4.11
+
+4.1)
+	My assumption is yes since there is less state inforamtion to save in a thread than a process.
+
+4.2)
+	In a pure ULT the only thing that can ask for kernel mode is the process. So if the thread wants kernel mode the whole process is now waiting for that one dumb thread. Whereas if you had kernel level threads each thread can askt he processor for a mode switch leaving other threads to do something else.
+
+4.3)
+	The OS/2 sounds more like a modern computer. Maybe that is what they mean by an object oriented OS. So maybe each object can have potentially many processes? If you got rid of the session it sounds like you now have more compitetion over the processor. Whereas before you probably could have virtual parallelism with process that are related via the session. But without a session for organization you now have a seperate entity for everything...
+
+	But then again I have no idea. I tried searching this question, no information helped me understand it better.
+
+4.4)
+	If you have a specific kernel level thread mapped to a user level thread then if the ULT asks for an IO, the kernel can do it on it's behalf. This won't stop the entire process, just that thread. If you don't have a mapping like that , then if you make a call that could block the process, then all threads in that process are blocked.
+
+4.5)
+	If a process exits and there are still threads of that process running, will they continue to run?
+
+	No, all threads are DESTROYED.
+
+4.7)
+	a) If it is iterating through only negative numbers then the thread for ++global_positives will never be used. Nothing is added.	
+	b) If the call to the function is a thread and the act of adding to a variable a thread then the thread running the loop to run the adding thread could create a problem. Although it is never accessed since all negative numbers fail. 
+
+4.8)
+	I'm lost
+
+4.11)
+	From my understanding of the reading, a LWP is meant to help bridge the gap between ULT and KLT. If you create less LWP then you reduce time, and the LWP can process each request. The downside is that if the ONE LWP for many threads is being accessed the others have to wait.

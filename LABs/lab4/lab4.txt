@@ -1,0 +1,75 @@
+Michelle Bergin
+Operating Systems
+LAB4
+
+PART1
+
+1)
+	They seem to error out when accessing memory?
+
+2)
+	8 (I read the code briefly) it lists it at the top as:
+	#define NTHREADS	8
+
+3)
+	argument for file system tests:
+	To run a file system test you type in fs'n'
+	
+5)
+	kh deals with the heap and how much space is available. This is good to know how much space is being used.
+
+6)
+	Crashes
+
+7)
+	It shows no difference...
+
+12)
+	You call the function from the menu file.
+
+13)
+	Varies, you have the .h files to help find the file for running but files are put in different folders for organization purposes.
+
+14)
+	pf, pwd, panic, q
+
+15)
+	The ?t programs are test programs. 
+
+16)
+	The shell command 's' is in the menu file. If ran it errors in a loop, Unkown syscall 50.
+	
+	I feel I am missing something from these exercizes...
+
+17)
+	p is for other programs. When I ran, p my-testbin/example, I got a synchonization error
+	example is a binary file. I can't run it I can't read it. I do not know what it does. I also do not see any readme file. No man file, no ls -a hidden file.
+
+18)
+	User testbin is in users/ but it is also in root/ add      crash    farm      f_test  kitchen     psort      sort        triplemat
+argtest  ctest    faulter   guzzle  malloctest  randcall   sty         triplesort
+badcall  dirconc  filetest  hash    matmult     rmdirtest  tail        zero
+bigfile  dirseek  forkbomb  hog     palin       rmtest     tictac
+conman   dirtest  forktest  huge    parallelvm  sink       triplehuge
+
+19)
+	p testbin/palin
+
+20)
+	common_prog
+
+21)
+	cmd_prog
+
+22)
+	Still looking but I found this! 
+	default:
+     	kprintf("Unknown syscall %d\n", callno);
+     	err = ENOSYS;
+     	break;
+	I've been looking for it :D
+
+	proc_create_runprogram 
+	proc
+
+	

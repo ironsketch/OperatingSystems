@@ -1,0 +1,116 @@
+Operating Systems
+HW1
+Michelle Bergin
+---------
+TOC
+1.1
+1.2
+1.3
+1.4
+1.6
+1.10
+*1.7
+---------
+
+1.1
+
+Memory
+	300 :: 3005
+	301 :: 5940
+	302 :: 7006
+
+	940 :: 0002
+
+I/O
+	005 :: 0003
+    006 :: 0000
+
+FETCH
+	PC
+		300
+	AC
+		
+	IR
+		3005
+
+EXECUTE
+	PC
+		301
+	AC
+		0003
+	IR
+		3005
+
+FETCH
+	PC
+		301
+	AC
+		0003
+	IR
+		5940
+
+
+EXECUTE
+	PC
+		302
+	AC
+		0005
+	IR
+		5940
+
+FETCH
+	PC
+		302
+	AC
+		0005
+	IR
+		7006
+
+EXECUTE
+	PC
+		303
+	AC
+		0005
+	IR
+		7006
+
+I/O (change)
+	006 :: 0005
+
+1.2
+
+The PC contains 300, the address of the first instruction. This instruction (1940) is loaded in to the IR and the PC is incremented. There are two internal processes to do this. The MAR which specifies the address in memory for the next read and write (940). And the MBR holds the data (0003). These are used before submitting to main memory.
+
+1.3
+
+	a) The first 8 bits are opcode the remaining 24 bits are the immediate operand or an operand address. Since you can have everything from 0 to 1 for each it is 2^24.
+	b1) Because an instruction is a total of 32 bits there would only be need of one cycle to access the memory for the local bus. But because the local data bus only has room for 16 bits it would take 2 cycles to access the memory.
+	b2) Becuase both the local address bus and local data bus are at 16 bits, BOTH would have to be accessed twice causing access to take twice as long on both.
+	c) Since an instruction is already at 32 bits, the IR would also have to have that much space. For the program counter since 24 bits are used for the operands then it would need 24 bits. (This second part I don't understand. If you read this and want to comment to explain, please do)
+
+1.4
+
+	a) 2^16 * 2
+	b) 2^16 * 1
+	c) A seperate bus and instructions for the seperate I/O space
+	d) An 8bit I/O bus allows 256 seperate addresses. So 256 8bit or 256 16 bit ports. 
+	(I researched the first 2 questions A LOT the last two I feel less confident about. The answers may be right but that isn't a reflection of my understanding)
+
+1.6
+
+	a) Input
+		The I/O Module regulates device communication so the INPR stays ready to accept an input because the FGI flag is = 0. When the input is finished the input = 1 and the contents get transfered to the ACC and the FGI is set back to 0.
+	Output
+		If FGI or FGO is set to 0 then the CPU says wait. When FGI is 1 it transfers fro the ACC to the OUTR. Then FGO gets set to 0 again.
+	From what I have read and tried to learn, I think this means that it prints immediatly after the word has been submitted to the ACC and the CPU is monitoring the FGI/FGO to know when to print etc.
+
+	b) My assumption is printing is MUCH slower, what I think is you could use an interrupt to tell the CPU when you are done with a task so that it can do other things in the mean while.
+
+1.10
+
+	a) Spatial is often things nearby in space (memory) and sequential. The use of the array is a spatial locality since arrays are read linearly
+	b) Temporal is often clustered or organized by time, frequently used. j is used frequently and is an example of temporal locality.
+
+*1.7
+
+The DMA or Direct Memory Access is started by the CPU to collect large amounts of data. Because that would bog down the CPU since the CPU is SO mcuh faster the DMA handless this action and sends an interrupt to the CPU when it is done :D 

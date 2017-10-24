@@ -1,0 +1,122 @@
+Michelle Bergin - Rosemary Davies - Brandon Ellington
+Lab2
+
+Successfully completed and can demonstrate
+	A generic idea of what Make files are and how the work together to set up a program/system.
+	A better idea of what everything is in the os161 files.
+	A good way to research what I need to find (I was able to help many students with my successfull Google searches)
+	I created a hello world c file
+	I created an integer buffer and allocated space to it with malloc then I iterated through it to place an int and then printed them out.
+	
+
+What I'm struggling with and a plan to fix
+	learning more C. I was teaching myself C for my robot, 3pi from Pololu. But what I was learning was strictly basic and arithmetic. I want to still do more C challenges. I have, hopefully, time over the weekend to do so.
+
+What have I learned and what I still need to learn from this lab
+	text
+
+TLDR(Too long don't read) Below is responses to questions from the lab for my memory purposes.
+
+PART 1 - Directory Explorations
+Q1, Q2, Q3, Q4, Q5, Q6, Q7
+	Q1)
+	os161.eecs.harvard.edu/resources/layout.html
+
+	1) build
+		Files generates by/during userland compilation
+	
+	2) CHANGES
+		??
+
+	3) common
+		Code shared between kernel and userland
+	
+		a) gcc-millicode
+		 Material to support gcc-generated code
+		
+		b) libc
+		 S standard library material used in both the kernel and userland
+			1) arch
+			 Machine-specific code
+
+			2) printf
+			 The printf implementation
+
+			3) stdlib
+			 Implementations of the functions from <stdlib.h>
+
+			4) string
+			 Implementations of functions from <string.h>
+
+	4) configure
+		??
+
+	5) defs.mk
+		??
+
+	6) design
+		Design notes and documents
+
+	7) kern
+		a) arch
+			Architecture-specific or machine-specific
+
+			1) mips
+				Stuffs for MIPS
+					a) conf
+					 MIPS-specific kernel configurations
+
+					b) include
+					 MIPS-specific header files
+					
+					c) locore
+					 Low-level trap and interrupt code for MIPS
+
+					d) syscall
+					 MIPS-specific system call material
+					
+					e) thread
+					 MIPS-specific thread system support
+
+					f) vm
+					 MIPS-specific virtual memory support (and dumbvm)
+
+			2)sys161
+		b) conf
+		c) fs
+		d) lib
+		e) proc
+		f) synchprobs
+		g) test
+		h) vfs
+		i) compile
+		j) dev
+		k) include
+		l) Makefile
+		m) startup
+		n) syscall
+		o) thread
+		p) vm
+
+	8) Makefile
+	9) man
+	10) mk
+	11) root
+	12) user
+
+ 
+Q3)
+	typing 'bmake' and then 'bmake install' installs the C library and user programs in the root, bin, sbin, testbin, etc
+
+Q4) 
+	anything in the compile folder - I saw in the os161.kernel.mk
+
+Q5) 
+	I found one in OS161 that gave options on how to install make
+	the make file in kern said that it only installs includes. It said that the other make file was in the compile folder but couldn't find it there.
+
+Q6) 
+	*.o, *.a tags and includelinks
+
+Q7)
+	

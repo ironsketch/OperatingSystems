@@ -1,0 +1,8 @@
+Michelle Bergin
+Lab3
+Operating Systems
+
+
+At first I struggled with where everything was! I had no idea where main.c was or test.h but I just dug and used logic to search where, most likely, they would be. Then as you know I had trouble getting my hello.c file to work. Usually when I don't know something I search the internet. I usually look at between 3 - 10 answers and find the commonality between them. I found most people responded to the error with, void needed to be between (). I also assumed that if it needed to be like that in my hello.c file it needed to match exactly like that in my .h file. So that worked!
+
+This lab was fun because I finally got to really do something in the os. :D

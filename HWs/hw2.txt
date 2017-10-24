@@ -1,0 +1,41 @@
+Operating Systems
+HW2
+Michelle Bergin
+CH2: 2.1, 2.2, 2.3, 2.4, *2.5
+
+2.1) 
+	One Job
+		a)	
+			1) T∙N
+			2) 1
+		   	   -
+		   	   N
+			3) 50%
+	Two Jobs
+		a)
+			1) T∙N
+			2) 2
+			   -
+			   N
+			3) 100%
+	Four Jobs
+		a)
+			1) 2∙T∙N
+			2) 4
+			   -
+			   N
+			3) 100%
+
+		b) The only way having the I/O time and processor time split up will help with response time or completion time etc. is when you have shorter proccess. For example you can have something finish within the first half cycle and something start after. Or so I am thinking...
+
+2.2)
+	My assumption is that if you favor I/O programs first then that allows time to for many other processor bound programs/ processes to run while the I/O is finishing since it takes longer to process an I/O process.
+
+2.3)
+	In time sharing you run a process till it is done, interrupted or it runs out of it's alloted time. In multiprogrammed batch systems, a job is run until it hits an I/O process which at that time a new job is brought in. I feel that it is much more affective to use a time sharing system.
+
+2.4)
+	A user-more application makes a system call to the OS. There are restricted access things that you can do on a computer, to help prevent errors, a user application needs to make a call to the OS. And if I am wrong please tell me, from what I thought I read, the OS still has some restrictions to the kernel.
+
+*2.5)
+	If a page/block of virtual memory is untouched for quite a while it can be freed to allow for other items in virtual memory. Virtual memory is usually the disk or solid state drive so there is more space in there though... As for getting the average of use, if there is a file that is being retrieved MORE often, then it can pull it from virtual memory to main memory and take something from main that hasn't been accessed in a while back to virtual.  
