@@ -81,7 +81,7 @@ Michelle Bergin
 	Hope these were good enough
 
 3.10)
-	HELP
+	If all processes/threads could be run in sequential order this is practicle. But in reality we have procesess/threads that have different priorities. If a processB is created with higher priority it would need the location that the previous processA has, then processA needs to be saved somewhere else in order for processB to be loaded. That is why stacks are used.
 
 3.12)
 	You created a baby process and it's printing the id of that child process? My assumption is it's unoque identifier or the memory location of it?			

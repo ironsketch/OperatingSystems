@@ -1,0 +1,55 @@
+Michelle Bergin
+Operating Systems
+LAB 5
+
+PART 1
+::::::::::::::::::
+
+1)	9 - menu.c, catmouse.c, whalemating.c, fstest.c, malloctest.c, synchtest.c, threadtest.c, tt3.c, uw-tests.c
+
+2)	In common_prog an int result is allocated thread_fork
+		thread_fork(
+			proc /* new process */,
+			cmd_progthread /* thread function */,
+			args /* thread arg */, nargs /* thread arg */);
+		
+	Before all this:
+		proc = proc_create_runprogram(args[0] /* name */
+		if (proc == NULL) {
+			return ENOMEM;
+		}
+
+	/*
+ 	* Make a new thread, which will start executing at "func". The thread
+ 	* will belong to the process "proc", or to the current thread's
+ 	* process if "proc" is null. The "data" arguments (one pointer, one
+	* number) are passed to the function. The current thread is used as a
+ 	* prototype for creating the new one. Returns an error code. The
+ 	* thread structure for the new thread is not returned; it is not in
+ 	* general safe to refer to it as the new thread may exit and
+ 	* disappear at any time without notice.
+ 	*/
+
+	When a program is run, a new processes is made and a new thread to run in that process. Because it lists it as NULL the thread goes to that process. I am thinking what if it isn't NULL, is that a start to multi threading? Or a way for a process to branch a thread to another process? PFT I have no idea yet.
+
+5 - 6 - 7 - 8 - 9)	I found semaphore *no_proc_sem which is used to signal when there are no more processes in proc.h
+	I found it also in proc.c:
+		another reference to the semaphore.
+		if(proc_count == 0){
+			V(no_proc_sem);
+		} 
+
+	I think I get it. I think that if you don't say when a process ends that it will try to find more, searching through random memory?
+
+PART 2
+::::::::::::::::::
+
+2)	It's testing time slice and scheduler, and testing threads. I saw the use of V.
+
+4)	a 0 or 1 is passed by which was called, if it's 1 (true) it runs loud. It seems to encaosulate the function in the thread to be run.
+
+5)	Semaphore, V?, P?
+
+6)	add to semaphore subtract. 
+	P = 
+	V =
