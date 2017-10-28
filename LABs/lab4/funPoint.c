@@ -3,6 +3,11 @@
  * Lab 4 Part III
  * Function Pointers in an array.
  */
+#include <types.h>
+#include <lib.h>
+#include <thread.h>
+#include <synch.h>
+#include <test.h>
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -34,7 +39,7 @@ void cupcake(){
     printf("    `---.|.|.|.---'\n");
     printf("\n");
 }
-int main(){
+int funPoint(){
 	void(*fun_Arr[])() = {cat, cupcake};
 	int size = 2;
 	int ch = size;
