@@ -28,7 +28,7 @@ HW4
 	b) If the call to the function is a thread and the act of adding to a variable a thread then the thread running the loop to run the adding thread could create a problem. Although it is never accessed since all negative numbers fail. 
 
 4.8)
-	I'm lost
+	Because the part of global_posititives that modifies that var is not in a critical section both A and B would be trying to access and write it at the same time.
 
 4.11)
 	From my understanding of the reading, a LWP is meant to help bridge the gap between ULT and KLT. If you create less LWP then you reduce time, and the LWP can process each request. The downside is that if the ONE LWP for many threads is being accessed the others have to wait.
