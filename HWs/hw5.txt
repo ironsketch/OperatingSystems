@@ -5,4 +5,33 @@ HW 5
 5.1, 5.3, 5.4, 5.5, 5.12, 5.19, 5.21, 5.25 
 Extra Credit *(5.6, (5.13,5.14, 5.15), 5.16, (5.23, 5.24))
 
-5.1) Because Multiprocessing actually can have processes
+5.1) Multiprocessing has actual concurrency. This is one actual difference between multiprocessing and multiprogramming. I can't think of a second except timing. A multiprogammed system will be slower since it never can attain true concurrency. Otherwise they both share interleaving as well.
+
+5.3)
+	a)
+	P1:: x=x-1 (9)
+	P2:: x=x-1 (8)
+	P1:: x=x+1 (9)
+	P2:: x=x+1 (10)
+
+	But what if two instructions are processed on P1? Could that happen?
+
+	b) I feel like I am missing something. I don't understand this question most likely.
+	P1:: x=x-1 (9)
+	P2:: x=x-1 (8)
+	P2:: x=x+1 (9)
+	P2:: x is 9
+	P2:: x=x-1 (8)
+	P1:: x=x+1 (9)
+	P1:: x is 9
+	P1:: x=x-1 (8)
+
+	5.4) a) You said this one was tricky so i assume my first response is wrong. 100. I looked it up and that is what a website said as well... I'll have to ask for clarification on this.
+		 b) Based on my previous thought N∙50 for an upper bound.
+	5.5) My only thought is if a process is suspended and blocked. How much time would that take versus running a process to keep checking. I think it depends on how long the process actually needs to wait versus blocking and unblocking a thread/process.
+
+	5.12) It seems that s.count is only incremented when the queue is empty and decremented if the count is greater than 0. I don't see it getting negative. And it doesn't matter switching them, they'll both work. The number used means nothing as long as it is used right.
+
+	5.19) I need help with this.
+
+	5.21) 
