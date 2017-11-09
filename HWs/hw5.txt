@@ -26,12 +26,29 @@ Extra Credit *(5.6, (5.13,5.14, 5.15), 5.16, (5.23, 5.24))
 	P1:: x is 9
 	P1:: x=x-1 (8)
 
-	5.4) a) You said this one was tricky so i assume my first response is wrong. 100. I looked it up and that is what a website said as well... I'll have to ask for clarification on this.
-		 b) Based on my previous thought N∙50 for an upper bound.
-	5.5) My only thought is if a process is suspended and blocked. How much time would that take versus running a process to keep checking. I think it depends on how long the process actually needs to wait versus blocking and unblocking a thread/process.
+5.4) 
+	a) You said this one was tricky so i assume my first response is wrong. 100. I looked it up and that is what a website said as well... I'll have to ask for clarification on this.
+	b) Based on my previous thought N∙50 for an upper bound.
 
-	5.12) It seems that s.count is only incremented when the queue is empty and decremented if the count is greater than 0. I don't see it getting negative. And it doesn't matter switching them, they'll both work. The number used means nothing as long as it is used right.
+5.5) My only thought is if a process is suspended and blocked. How much time would that take versus running a process to keep checking. I think it depends on how long the process actually needs to wait versus blocking and unblocking a thread/process.
 
-	5.19) I need help with this.
+5.12) It seems that s.count is only incremented when the queue is empty and decremented if the count is greater than 0. I don't see it getting negative. And it doesn't matter switching them, they'll both work. The number used means nothing as long as it is used right.
 
-	5.21) 
+5.19) I need help with this.
+
+5.21)
+	a) semWait(e); semWait(s)
+		semWait(e) it is waiting if the buffer is full. 
+		semWait(s) waiting to get to critical region. so that consumer doesn't access at same time
+		So if these are switched I think there would be dead lock (if I understood everything)
+		The producer would have exclusive access to a buffer that would never decrement.
+	b) semSignal(s); semSignal(n)
+		semSignal(n) I think is alerting the consumer that something has been added. 
+		I don't see a a problem with these switching since the consumer has to wait for both anyways.
+	c) semWait(n); semWait(s)
+		As stated above I don't see a problem with these switched since the consumer can't get
+		past this chunk without passing both
+	d) semSignal(s); semSignal(e)
+		Same as above I don't think these matter.
+	
+5.25) Is the critical section not protected? It seems weird. I am not understanding what it is doing. It seems like it is waiting on the ability to go in on the top. It adds one to readcount and then tells the writer to wait. It then signals the mutex which I thought would then free it? It goes into the critical region, then goes back into a mutex. Maybe those are the critical region? From what I can see, the writer could get starved if there are a constant stream of readers.
