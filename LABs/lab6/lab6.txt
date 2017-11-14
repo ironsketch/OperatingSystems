@@ -1,0 +1,26 @@
+Operating Systems
+Michelle Bergin
+Lab6
+
+1) 	P is used to wait for all child process to finish. Each child process is signaling via the semaphore V to tell it's mama through P that they are done.
+	
+	V will aquire a spinlock. That I am unsure of... But then it adds to the semaphore count. This looks to me like a counting semaphore. It looks like it uses wchan to wake another process waiting for V. And then it relases the spinlock.
+	The spinlock I don't understand.
+	
+	P it looks like it just 'sleeps' while it waits for sem_count to be bigger than 0. Then it aquires a spinlock and then decriments the sem_count... This is all hard to understand
+
+2)	Psuedocode:
+
+		lock_aquire(const lock *lock)
+			KASSERT that lock is not NULL
+
+			while LOCK == 0 spin
+
+			aquire lock via lock = 1
+
+		lock_release(struct lock *lock)
+			KASSERT that lock is not NULL
+
+			if lock_do_i_hold == true
+				release lock via lock = 0
+
