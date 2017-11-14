@@ -51,5 +51,22 @@ PART 2
 5)	Semaphore, V?, P?
 
 6)	add to semaphore subtract. 
-	P = 
-	V =
+	P = Waits for a signal
+	V = Signals
+
+7) runthreads() creates N threads and then runs through N times waiting for a signal from each one. Then it can end the program.
+
+I used quietthread but the same applies to both. Each thread runs this function then at the end sends the signal that it is done.
+
+8) 	tsem is set to NULL to start.
+	then when run threads calls P(tsem) Which puts it in a wait status because it is waiting for the signal from it's children.
+	I went to sync.c and it appears that if you call P sem_count is --.
+	Then V will ++ plus I see something, wakeone. 
+	As of writing this I am confused because P has a while loop for sem_count when it == 0 but it appears that it is going down into negatives so I don't see how each is sleeping. Unless each is it's own status and each has only status of 0, -1, 1?
+	
+PART 3
+::::::::::::::::::
+
+5) 	From question 8 this leads me to think that we are waking up sems before the previous sem is done printing my longer string of characters. So it looks all messy. My assumption for a solution is to put the actual printing of each in it's own lock? I read on wiki that it's used for specifically for threads.
+
+	A mutex might work? It sets it's own lock and uses it to print and then the next thread ready to run can't actually print till the mutex is done from the previous?
