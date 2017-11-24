@@ -1,0 +1,146 @@
+Operating Systems
+HW6
+Michelle Bergin
+6.1, 6.2, 6.3, 6.4, 6.5, 6.6, 6.11, 6.14, 6.15, 6.16, *6.18
+
+6.1) Show that the four conditions of deadlock apply to Figure 6.1a .
+	1.	Mutual Exclusion: Only one process may use a resource at a time. No process may access a resource unit that has been allocated to another process.
+	Each car wants access to a road that another wants.
+
+	2.	Hold and Wait: A process may hold allocated resources while awaiting assignment of other resources
+	Each car is holding a road, waiting for another road to be open, that another car is holding.
+
+	3.	No Preemption: No resource can be forcibly removed from a process holding it
+	Because of this each car is in stalemate?
+
+	4.	Circular Wait: A closed chain of processes exists, such that each process holds at least one resource needed by the next process in the chain.
+	This is true for these cars as well
+
+6.2) Show how each of the techniques of prevention, avoidance, and detection can be applied to Figure 6.1.
+	Prevention: Each car can only grab a resource if all their resources can be grabbed at once. This is where I see and understand the bankers algorithm.
+	Avoidance: Synchronize the cars so that you can use the most of the processor as possible yet still allowing the cars to use the roads they need.
+	Detection: If cars are stagnate, nothing is running on the processor for a given amount of time, then take reset them?
+
+6.3) For Figure 6.3 , provide a narrative description of each of the six depicted paths, similar to the description of the paths of Figure 6.2 provided in Section 6.1 .
+	Right so their diagram confuses me...
+	1) I see Q Getting B and then A
+	2) Then Q releasing B? (Allowing P to get B in step 4)
+	3) Then Q releasing A?
+	4) P gets B and A. Then releases B?
+	5) Then P gets B again?
+	6) Then it keeps it? 
+	So lost
+
+6.4) It was stated that deadlock cannot occur for the situation reflected in Figure 6.3 . Justify that statement.
+	It appears that Process P has to wait to grab both A and B until both are released by Q?
+
+6.5) Banker's Algorithm
+	a) Verify that the Available array has been calculated correctly.
+		Yes: A) 15 - 9 = 6, B) 6 - 3 = 3, C) 9 - 4 = 5, D) 10 - 6 = 4
+	b) Calculate the Need matrix.
+		
+			A	|	B	|	C	|	D
+		-------------------------------
+		P0|	7	|	5	|	3	|	4
+		-------------------------------
+		P1|	2	|	1	|	2	|	2
+		-------------------------------
+		P2|	3	|	4	|	4	|	2
+		-------------------------------
+		P3|	2	|	3	|	3	|	1
+		-------------------------------
+		P4|	4	|	1	|	2	|	1
+		-------------------------------
+		P5|	3	|	4	|	3	|	3
+		-------------------------------
+
+	c) Show that the current state is safe, that is, show a safe sequence of processes. In addition, to the sequence show how the Available (working array) changes as each process terminates.
+		1) We let P1 finish since it can safely. This releases what P1 was holding
+
+				Available
+			A	|	B	|	C	|	D
+		-------------------------------
+			6	|	4	|	6	|	5
+		-------------------------------
+
+		2) Now we can finish P2 releasing it's resources.
+
+		        Available
+            A   |   B   |   C   |   D   
+        -------------------------------
+            10  |   5   |   6   |   7   
+        -------------------------------
+
+		3) Now we can run P0 releasing it's monopoly
+
+		       Available
+            A   |   B   |   C   |   D
+        -------------------------------
+            12  |   5   |   8   |   8
+        -------------------------------
+
+		4) We can now run P3 and P4? Releasing both... if that is a thing you can do?
+
+		        Available
+            A   |   B   |   C   |   D
+        -------------------------------
+            14  |   6   |   8   |   9
+        -------------------------------
+
+		5) Lastely we run P5 releasing the rest
+
+	d) Given the request (3,2,3,3) from Process P5. Should this request be granted? Why or why not?
+		I am lost, as long as there is enough resources it should be ok?
+
+6.6) In the code below, three processes are competing for six resources labeled A to F. 
+		a.) Using a resource allocation graph ( Figures 6.5 and 6.6 ), show the possibility of a deadlock in this implementation.
+			
+			NEEDS
+			A	|	B	|	C	|	D	|	E	|	F
+		-----------------------------------------------
+		P0|	1	|	1	|	1	|	0	|	0	|	0
+		-----------------------------------------------
+		P1|	0	|	1	|	0	|	1	|	1	|	0
+		-----------------------------------------------
+		P2|	0	|	0	|	1	|	1	|	0	|	1
+
+		Each process needs what another process needs. There is no ability to run concurrently if there is only ONE instance of each resource.
+
+		b.) Modify the order of some of the get requests to prevent the possibility of any deadlock. You cannot move requests across procedures, only change the order inside each procedure. Use a resource allocation graph to justify your answer.
+		P2) If able, have P2 ask for C after P0 is done with it then run P1
+		or
+		P1) If able have P1 wait to ask for B until P0 is done with it then run P2
+		etc
+
+6.11) P1 has 45, P2 has 40 and P3 has 15, a total of 100 of the total 150 available. 
+	P1 needs 25 more, P2 20 more and P3 45 more. 
+	You could have P1 and P2 run to completion then run P3
+		a) With P4 the total taken at startup would be 125, Only one Process at first could be run, P1 would process then P2, then P3, then P4
+		b) If this is the case, then the total taken is 135 leaving 15 left. No process could be run and dead lock would accur.
+
+6.14) Suppose the following two processes, foo and bar are executed concurrently and share the semaphore variables S and R (each initialized to 1) and the integer variable x (initialized to 0).
+	a) Can the concurrent execution of these two processes result in one or both being blocked forever? If yes, give an execution sequence in which one or both are blocked forever.
+		Yes.
+			foo getsS and waits for R because
+			bar getsR and waits for S
+	b) Can the concurrent execution of these two processes result in the indefinite postponement of one of them? If yes, give an execution sequence in which one is indefinitely postponed.
+	 	Yes.
+			foo can get S and R, release S, get S again and release and get R again.
+			bar could never run. 
+			Whereas visaversa when bar releases S it always allows foo to get it. 
+			To fix foo we need to switch the lines of semSignals
+			... i think?
+
+6.15) Consider a system consisting of four processes and a single resource. The current state of the claim and allocation matrices are:
+	What is the minimum number of units of the resource needed to be available for this state to be safe?
+		I am assuming C is currently allocated and A is needed?
+		12?
+		This question is stupid
+
+6.16) a) 
+		1) Banker's Algorithm allows for best concurrency based on what is still available
+		2) I see detect deadlock and kill thread, releasing all resources :: restart thread and release all resources if thread needs to wait :: and detect deadlock and roll back thread's actions to be about the same...?
+		3) reserve all resources in advance and resource ordering seems the longest. Since you would basically only have one process at a time using each resource.
+	  b)
+	  	
+

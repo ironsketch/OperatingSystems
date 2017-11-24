@@ -32,7 +32,7 @@ Extra Credit *(5.6, (5.13,5.14, 5.15), 5.16, (5.23, 5.24))
 
 5.5) My only thought is if a process is suspended and blocked. How much time would that take versus running a process to keep checking. I think it depends on how long the process actually needs to wait versus blocking and unblocking a thread/process.
 
-5.12) It seems that s.count is only incremented when the queue is empty and decremented if the count is greater than 0. I don't see it getting negative. And it doesn't matter switching them, they'll both work. The number used means nothing as long as it is used right.
+5.12) This is like a counting semaphore. It seems that s.count is only incremented when the queue is empty and decremented if the count is greater than 0. I don't see it getting negative. And it doesn't matter switching them, they'll both work. The number used means nothing as long as it is used right.
 
 5.19) I need help with this.
 
