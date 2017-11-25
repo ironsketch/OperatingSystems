@@ -1,0 +1,85 @@
+Operating Systems
+Michelle Bergin
+HW7
+
+7.2, 7.6, 7.7, 7.8, 7.12, 7.13, 7.14
+
+7.2) Consider a fixed partitioning scheme with equal-size partitions of 2 16 bytes and a total main memory size of 2 24 bytes. A process table is maintained that includes a pointer to a partition for each resident process. How many bits are required for the pointer?
+	2^8 8 bit addresses
+
+7.6) 
+	a) What was the maximum size of the swapped out process?
+		8M
+	b) What was the size of the free block just before it was partitioned by X? 
+		6M
+	c) A new 3-Mbyte allocation request must be satisfied next. Indicate the intervals of memory where a partition will be created for the new process under the following four placement algorithms: best-fit, first-fit, next-fit, worst-fit. For each algorithm, draw a horizontal segment under the memory strip and label it clearly.
+		Best-fit = the 3M at the end
+		First-fit = 4M at the beginning
+		Next-fit = The 5M after the X
+		Worst-fit? = 8M
+
+7.7) A 1-Mbyte block of memory is allocated using the buddy system.
+	a) Show the results of the following sequence in a figure similar to Figure 7.6 : Request 70; Request 35; Request 80; Return A; Request 60; Return B; Return D; Return C. 
+		
+		+-------------------------------------------------------------------------------------------+
+		|											1M												|
+		+-------------------------------------------------------------------------------------------+
+
+		+-------------------------------------------------------------------------------------------+
+		| A = 128K |   128K	  |         256K		 |						512K					|
+		+-------------------------------------------------------------------------------------------+
+		
+		+-------------------------------------------------------------------------------------------+
+		|A = 128K |B=64K| 64K |         256K         |                      512K                    |
+		+-------------------------------------------------------------------------------------------+
+
+		+-------------------------------------------------------------------------------------------+
+		|A = 128K |B=64K| 64K |       C = 256K       |                      512K                    |
+		+-------------------------------------------------------------------------------------------+
+
+		+-------------------------------------------------------------------------------------------+
+		|  128K   |B=64K| 64K |       C = 256K       |                      512K                    |
+		+-------------------------------------------------------------------------------------------+
+		
+		+-------------------------------------------------------------------------------------------+
+		|  128K   |B=64K|D=64K|       C = 256K       |                      512K                    |
+		+-------------------------------------------------------------------------------------------+
+
+		+-------------------------------------------------------------------------------------------+
+		|  128K   | 64K |D=64K|       C = 256K       |                      512K                    |
+		+-------------------------------------------------------------------------------------------+
+
+		+-------------------------------------------------------------------------------------------+
+		|         256K        |       C = 256K       |                      512K                    |
+		+-------------------------------------------------------------------------------------------+
+
+		+-------------------------------------------------------------------------------------------+
+		|                                           1M                                              |
+		+-------------------------------------------------------------------------------------------+
+
+7.8) Consider a buddy system in which a particular block under the current allocation has an address of 011011110000
+	a) If the block is of size 4, what is the binary address of its buddy?
+		011011110100
+	b) If the block is of size 16, what is the binary address of its buddy?
+		011011100000
+
+7.12) Consider a simple paging system with the following parameters: 2 32 bytes of physical memory; page size of 2 10 bytes; 2 16 pages of logical address space. 
+	a) How many bits are in a logical address? 
+		16
+	b) How many bytes in a frame? 
+		2^10
+	c) How many bits in the physical address specify the frame? 
+		22 bits, 32 - 10
+	d) How many entries in the page table? 
+		help
+	e) How many bits in each page table entry? Assume each page table entry contains a valid/invalid bit.
+		help
+
+7.13) Write the binary translation of the logical address 0001010010111010 under the following hypothetical memory management schemes, and explain your answer:
+	a) a paging system with a 256-address page size, using a page table in which the frame number happens to be four times smaller than the page number
+		
+
+	b) a segmentation system with a 1K-address maximum segment size, using a segment table in which bases happen to be regularly placed at real addresses: 22  4,096  segment #
+	
+
+7.14)
