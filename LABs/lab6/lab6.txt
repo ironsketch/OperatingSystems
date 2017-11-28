@@ -2,6 +2,10 @@ Operating Systems
 Michelle Bergin
 Lab6
 
+:::::::::::
+PART1
+:::::::::::
+
 1) 	P is used to wait for all child process to finish. Each child process is signaling via the semaphore V to tell it's mama through P that they are done.
 	
 	V will aquire a spinlock. That I am unsure of... But then it adds to the semaphore count. This looks to me like a counting semaphore. It looks like it uses wchan to wake another process waiting for V. And then it relases the spinlock.
@@ -23,4 +27,11 @@ Lab6
 
 			if lock_do_i_hold == true
 				release lock via lock = 0
+
+3)	Yes locks are first come first serve. They spin using wchan and wait for the lock to be open. By having each thread use the same lock, each thread has to wait for each other thread to finish doing its doody.
+
+:::::::::::
+PART2
+:::::::::::
+
 
