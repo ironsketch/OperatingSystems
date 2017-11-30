@@ -9,9 +9,9 @@ HW7
 
 7.6) 
 	a) What was the maximum size of the swapped out process?
-		8M
+		1M
 	b) What was the size of the free block just before it was partitioned by X? 
-		6M
+		7M
 	c) A new 3-Mbyte allocation request must be satisfied next. Indicate the intervals of memory where a partition will be created for the new process under the following four placement algorithms: best-fit, first-fit, next-fit, worst-fit. For each algorithm, draw a horizontal segment under the memory strip and label it clearly.
 		Best-fit = the 3M at the end
 		First-fit = 4M at the beginning
@@ -82,4 +82,17 @@ HW7
 	b) a segmentation system with a 1K-address maximum segment size, using a segment table in which bases happen to be regularly placed at real addresses: 22  4,096  segment #
 	
 
-7.14)
+7.14) 
+		a) 	198 < 248 No seg fault
+			660 + 198 = 858 physical address
+
+		b)	156 < 198 No seg fault
+			156 + 222 = 378 physical address
+
+		c)	530 > 422 seg fault
+
+		d)	444 < 604 No seg fault
+			996 + 222 = 1440 physical address
+
+		e)	222 < 248 No seg fault
+			660 + 222 = 882 physical address
