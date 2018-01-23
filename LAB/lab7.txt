@@ -1,0 +1,15 @@
+Operating Systems
+LAB7
+Michelle Bergin
+
+PART1
+
+1) user/ in os161
+2) testbin/'name of program'
+4) f_test appears to be running up to 4. The original process to run the program then it appears to fork off 3 times?
+5) The os runs as a thread. It creates the initial process but the os runs as kernel threads
+6) Yes
+7) ??
+8) I thought it was one to one?
+9) syscall.h
+10) 

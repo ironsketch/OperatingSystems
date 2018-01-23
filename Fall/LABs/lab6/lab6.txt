@@ -30,8 +30,19 @@ PART1
 
 3)	Yes locks are first come first serve. They spin using wchan and wait for the lock to be open. By having each thread use the same lock, each thread has to wait for each other thread to finish doing its doody.
 
-:::::::::::
-PART2
-:::::::::::
+all the rest)
 
+OS/161 kernel [? for menu]: sy2
+Starting lock test...
+cleanitems: Destroying sems, locks, and cvs
+Lock test done.
+Operation took 2.007727960 seconds
+OS/161 kernel [? for menu]: uw1
+Starting uwlocktest1...
+value of test_value = 0 should be 0
+TEST SUCCEEDED
+cleanitems: Destroying sems and locks
+uwlocktest1 done.
+Operation took 23.483729560 seconds
+OS/161 kernel [? for menu]: 
 
