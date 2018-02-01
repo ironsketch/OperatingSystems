@@ -5,9 +5,79 @@ Michelle Bergin
 9.1, 9.2, 9.4, 9.14
 
 9.1)
+	Show the schedule using shortest remaining time, nonpreemptive priority (a smaller priority number implies higher priority) and round robin with quantum 30 ms. Use time scale diagram as shown below for the FCFS example to show the schedule for each requested scheduling policy.
+
+	Process Burst Time Priority Arrival Time 
+	P1 		50 ms 		4 		0 ms 
+	P2 		20 ms 		1 		20 ms 	
+	P3 		100 ms 		3 		40 ms 
+	P4 		40 ms 		2 		60 ms
+ 
+
+	SRT
+	
+	P1|20|  |30 |    |
+	-----------------------------------
+	P2|  |20|   |    |
+	-----------------------------------
+	P3|  |  |   |    | 100
+	-----------------------------------
+	P4|  |  |   |40  |
+	-----------------------------------
+	    20 40  70   110
+
+	Non Preemptive Priority
+
+	P1|50   |  |    |
+	-----------------------------------
+	P2|     |20|    |
+	-----------------------------------
+	P3|     |  |    | 100
+	-----------------------------------
+	P4|     |  |40  |
+	-----------------------------------
+           50 70   110
+
+	Round Robin Quantum 30ms
+	
+	P1|30 |  |20|   |   |   |  |
+	-----------------------------------
+	P2|   |20|  |   |   |   |  |
+	-----------------------------------
+	P3|   |  |  |30 |   |30 |  | 40
+	-----------------------------------
+	P4|   |  |  |   |30 |   |10|
+	-----------------------------------
+	     30 50 70  100 130 160 |
 
 9.2)
+		Process Arrival Time 	Processing Time 
+		A 		0 				3 
+		B 		1 				5 
+		C 		3 				2 
+		D 		9 				5 
+		E 		12 				5
+		
+		FCFS
+		A|A|A|B|B|B|B|B|C|C|D|D|D|D|D|E|E|E|E|E|
+
+		Round Robin (no time quantum given I'll give it 3)
+		A|A|A|B|B|B|C|C|B|B|D|D|D|E|E|E|D|D|E|E|
+
+		SPN
+		A|A|A|C|C|B|B|B|B|B|D|D|D|D|D|E|E|E|E|E|
+
+		SRT
+		A|A|A|C|C|B|B|B|B|B|D|D|D|D|D|E|E|E|E|E|
+
+		HRRN
+
+
+		Feedback
 
 9.4)
 
 9.14)
+ As processes use more and more CPU, they are moved down to the lower-priority queues.
+ I/O-bound processes, which do not use much CPU, are moved up. So, this strategy favors
+ I/O-bound jobs.
