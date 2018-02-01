@@ -121,4 +121,14 @@ F - 1
 	Help
 
 8.18)
-	help
+	Consider a paged logical address space (composed of 32 pages of 2 Kbytes each) mapped into a 1-Mbyte physical memory space. 
+	
+		a. What is the format of the processor’s logical address? 
+			32 pages = 2^5, 2 Kbytes each = 2^11
+			So The page # is 5 bits and Page offset is 11 bits
+
+		b. What is the length and width of the page table (disregarding the “access rights” bits)? 
+			There are 32 pages and when translating from page# to page frame you need to keep the 11 bits from the offset. Since the space is mapped to a 1 MB space Which is 2^20 you minus the exponants 20 - 9 Which means that the length and width is 32 x 9
+	
+		c. What is the effect on the page table if the physical memory space is reduced by half?
+			Taking half of the table isn't 2^10 it is 2^19 (think about it michelle :/ ) So that means it's 19 - 11 so it will be 32 x 8
