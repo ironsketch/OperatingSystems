@@ -1,0 +1,32 @@
+Michelle Bergin
+Operating Systems
+Lab9
+
+1) When you fork you are creating a copy of the original process (there are some difference listed on the man page)
+But you can see that there are different processes because when it prints out they are different. But each is running the same code
+So each will have the same X. If you were to fork your process to run something else you could get them to have different out puts, but 
+instead we have each just running the same thing
+
+2) Because the child returns 0 if succesful you can split the processes with the if loop. 
+
+3) I kinda got this to work. I can't get parent and child to both talk at the same time.
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/types.h>
+
+int main(void) {
+   pid_t childpid;
+   for (int i = 1; i < 5; i++){
+      if ((childpid = fork()) <= 0){    /* code in simplefan.c */
+         break;
+      }
+   }
+   if (childpid >= 0){                             /* child code */
+      printf("I am child %ld\n", (long)getpid());
+   } else {                                         /* parent code */
+      printf("I am parent %ld\n", (long)getpid());
+   }
+   return 0;
+}
+
+Part 3 already done last quarter! It was fun :D 

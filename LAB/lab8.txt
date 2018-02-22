@@ -1,0 +1,30 @@
+Michelle Bergin
+Operating Systems
+Lab 8
+
+I was able to test all 3, fork, waitpid and getpid
+
+#include <unistd.h>
+#include <stdio.h>
+
+int main(){
+   int pid = 1;
+   int x = 0;
+   int butt = fork();
+   int butt2 = waitpid(pid, &x, 0);
+   int butt3 = getpid();
+   printf("Fork Call: %d\n", butt);
+   printf("Waitpid Call: %d\n", butt2);
+   printf("Getpid Call: %d\n", butt3);
+   return 0;
+}
+
+Results:
+
+OS/161 kernel [? for menu]: p my-testbin/forkYOU
+Fork Call: 1
+Waitpid Call: 1
+Getpid Call: 1
+Operation took 0.167390172 seconds
+
+Woot! I got a bit of help from Peter. I was actually on the right track I was just second guessing my self!
